@@ -1,0 +1,91 @@
+#!/usr/bin/env python
+
+from gradelib import *
+
+r = Runner()
+
+
+@test(20, "thread package with public testcase 0")
+def test_thread_0():
+    r.run_qemu(shell_script([
+        'mp1-0',
+    ]))
+    r.match(
+	'mp1-0',
+	'thread 1: 100',
+	'thread 2: 0',
+	'thread 3: 10000',
+	'thread 1: 101',
+	'thread 2: 1',
+	'thread 3: 10001',
+	'thread 1: 102',
+	'thread 2: 2',
+	'thread 3: 10002',
+	'thread 1: 103',
+	'thread 2: 3',
+	'thread 3: 10003',
+	'thread 1: 104',
+	'thread 2: 4',
+	'thread 3: 10004',
+	'thread 1: 105',
+	'thread 2: 5',
+	'thread 1: 106',
+	'thread 2: 6',
+	'thread 1: 107',
+	'thread 2: 7',
+	'thread 1: 108',
+	'thread 2: 8',
+	'thread 1: 109',
+	'thread 2: 9',
+	'',
+	'exited',
+    )
+
+
+@test(20, "thread package with public testcase 1")
+def test_thread_1():
+    r.run_qemu(shell_script([
+        'mp1-1',
+    ]))
+    r.match(
+	'mp1-1',
+	'thread 1: 100',
+	'thread 2: 0',
+	'thread 3: 10000',
+	'thread 4: 1000',
+	'thread 5: 10',
+	'thread 1: 101',
+	'thread 2: 1',
+	'thread 3: 10001',
+	'thread 4: 1001',
+	'thread 5: 11',
+	'thread 1: 102',
+	'thread 2: 2',
+	'thread 3: 10002',
+	'thread 4: 1002',
+	'thread 1: 103',
+	'thread 2: 3',
+	'thread 5: 12',
+	'thread 4: 1003',
+	'thread 1: 104',
+	'thread 2: 4',
+	'thread 5: 13',
+	'thread 4: 1004',
+	'thread 2: 5',
+	'thread 5: 14',
+	'thread 4: 1005',
+	'thread 2: 6',
+	'thread 5: 15',
+	'thread 4: 1006',
+	'thread 2: 7',
+	'thread 5: 16',
+	'thread 4: 1007',
+	'thread 2: 8',
+	'thread 4: 1008',
+	'thread 4: 1009',
+	'thread 4: 1010',
+	'',
+	'exited',
+    )
+
+run_tests()

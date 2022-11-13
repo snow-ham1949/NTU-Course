@@ -1,0 +1,10 @@
+.DS_Store
+*.zip
+*.img
+*.d 
+*.o
+*.asm
+*.sym
+
+*.csv
+*.out
