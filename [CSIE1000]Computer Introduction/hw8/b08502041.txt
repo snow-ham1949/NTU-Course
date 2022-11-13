@@ -1,0 +1,33 @@
+1. SELECT Planet_Name FROM TimeTable AS T WHERE T.Character_Name = "Princess Leia" AND T.Movie = 3;
+
+2. SELECT DISTINCT Character_Name FROM TimeTable T, Planets P, Characters C
+WHERE T.Movie = 2 AND T.Planet_Name = P.name AND T.Character_Name = C.name AND P.Affiliation = C.Affiliation;
+
+3. SELECT C.Name 
+FROM Characters C 
+WHERE C.Name NOT IN (
+    SELECT T.Character_Name 
+    FROM TimeTable T, Planets P 
+    WHERE T.Planet_Name = P.Name 
+        AND P.Affiliation = "empire"
+);
+
+4. SELECT C.Name, COUNT(T.Planet_Name)
+FROM Characters C
+LEFT JOIN TimeTable T
+    ON C.Name = T.Character_Name
+AND T.Planet_Name = C.Homeworld
+GROUP BY C.Name;
+
+5. SELECT T_2.Movie, T_2.Character_Name 
+FROM ( 
+        SELECT A.Movie, MAX(count) as Count 
+        FROM ( 
+                SELECT T.Movie, COUNT(T.Character_Name) count 
+                FROM TimeTable T
+                GROUP BY T.Movie, T.Character_Name) A 
+        GROUP BY A.Movie) T_1, 
+        ( 
+            SELECT T.Movie, T.Character_Name, COUNT(T.Character_Name) count 
+            FROM TimeTable T GROUP BY T.Movie, T.Character_Name) T_2 
+WHERE T_1.Movie = T_2.Movie AND T_1.Count = T_2.count;
