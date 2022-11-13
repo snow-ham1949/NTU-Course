@@ -1,0 +1,7 @@
+*.dSYM
+
+.DS_Store
+
+.vscode
+
+/exam

@@ -1,0 +1,26 @@
+```c
+int FindPivot(int arr[], int n)
+{
+    sum = 0, weight_sum = 0
+    FOR i = n - 1 to 0
+        sum += arr[i]
+        weight_sum += (arr[i] * i)
+
+
+    num = 0, prev_sum = 0
+    left = 0, right = weight_sum
+    FOR i = 0 to n - 1
+        num = arr[i];
+        sum -= num;
+
+        IF left equals right THEN
+            return i
+        END IF:
+        
+        right -= sum;
+        prev_sum += num;
+        left += prev_sum;
+
+    return -1
+}
+```

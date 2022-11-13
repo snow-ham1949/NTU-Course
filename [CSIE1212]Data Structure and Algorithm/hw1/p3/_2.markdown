@@ -1,0 +1,17 @@
+```c
+unsigned int FindFirstMissingNumber(unsigned int arr[], int n)
+{
+    FOR i = 0 to n - 1:
+        IF arr[i] <= n THEN
+            arr[abs(arr[i]) - 1] *= (-1)
+        END IF
+
+    missing = -1
+
+    FOR i = 0 to n - 1:
+        IF arr[i] > 0:
+            missing = i + 1
+
+    return missing
+}
+```

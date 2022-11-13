@@ -1,0 +1,8 @@
+4 7
+query
+merge 1 2
+query
+merge 3 4
+query
+merge 1 3
+query
